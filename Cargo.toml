@@ -1,7 +1,11 @@
 [package]
 name = "x11-sys"
 version = "1.0.0-main"
+description = "X11 library bindings"
 license = "MIT"
+documentation = "https://docs.rs/x11-sys"
+homepage = "https://github.com/daggerbot/x11-sys"
+repository = "https://github.com/daggerbot/x11-sys"
 edition = "2021"
 
 [build-dependencies]
