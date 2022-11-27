@@ -1,0 +1,10 @@
+XPanoramiXAllocInfo
+XPanoramiXGetScreenCount
+XPanoramiXGetScreenSize
+XPanoramiXGetState
+XPanoramiXQueryExtension
+XPanoramiXQueryVersion
+XineramaIsActive
+XineramaQueryExtension
+XineramaQueryScreens
+XineramaQueryVersion

@@ -1,0 +1,89 @@
+[package]
+name = "x11-sys"
+version = "1.0.0-main"
+license = "MIT"
+edition = "2021"
+
+[build-dependencies]
+bindgen = "0.62.0"
+pkg-config = "0.3.26"
+
+[features]
+default = []
+macos = []
+
+glx = ["glx-headers"]
+x11 = ["x11-headers"]
+x11-xcb = ["x11-xcb-headers"]
+xcursor = ["xcursor-headers"]
+xext = ["xext-headers"]
+xfixes = ["xfixes-headers"]
+xft = ["xft-headers"]
+xi = ["xi-headers"]
+xinerama = ["xinerama-headers"]
+xmu = ["xmu-headers"]
+xpresent = ["xpresent-headers"]
+xrandr = ["xrandr-headers"]
+xrender = ["xrender-headers"]
+xss = ["xss-headers"]
+xt = ["xt-headers"]
+xtst = ["xtst-headers"]
+xxf86vm = ["xxf86vm-headers"]
+
+all = [
+    "glx",
+    "x11",
+    "x11-xcb",
+    "xcursor",
+    "xext",
+    "xfixes",
+    "xft",
+    "xi",
+    "xinerama",
+    "xmu",
+    "xpresent",
+    "xrandr",
+    "xrender",
+    "xss",
+    "xt",
+    "xtst",
+    "xxf86vm",
+]
+
+glx-headers = []
+x11-headers = []
+x11-xcb-headers = []
+xcursor-headers = []
+xext-headers = []
+xfixes-headers = []
+xft-headers = []
+xi-headers = []
+xinerama-headers = []
+xmu-headers = []
+xpresent-headers = []
+xrandr-headers = []
+xrender-headers = []
+xss-headers = []
+xt-headers = []
+xtst-headers = []
+xxf86vm-headers = []
+
+all-headers = [
+    "glx-headers",
+    "x11-headers",
+    "x11-xcb-headers",
+    "xcursor-headers",
+    "xext-headers",
+    "xfixes-headers",
+    "xft-headers",
+    "xi-headers",
+    "xinerama-headers",
+    "xmu-headers",
+    "xpresent-headers",
+    "xrandr-headers",
+    "xrender-headers",
+    "xss-headers",
+    "xt-headers",
+    "xtst-headers",
+    "xxf86vm-headers",
+]

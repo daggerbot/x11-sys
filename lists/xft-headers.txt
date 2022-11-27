@@ -1,0 +1,2 @@
+X11/Xft/Xft.h
+X11/Xft/XftCompat.h

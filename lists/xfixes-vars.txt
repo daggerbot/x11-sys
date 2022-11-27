@@ -1,0 +1,2 @@
+XFixesExtensionInfo
+XFixesExtensionName

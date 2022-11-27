@@ -1,0 +1,11 @@
+XPresentFindDisplay
+XPresentFreeInput
+XPresentNotifyMSC
+XPresentPixmap
+XPresentQueryCapabilities
+XPresentQueryExtension
+XPresentQueryVersion
+XPresentSelectInput
+XPresentVersion
+_fini
+_init

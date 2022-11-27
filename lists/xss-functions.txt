@@ -1,0 +1,13 @@
+XScreenSaverAllocInfo
+XScreenSaverGetRegistered
+XScreenSaverQueryExtension
+XScreenSaverQueryInfo
+XScreenSaverQueryVersion
+XScreenSaverRegister
+XScreenSaverSelectInput
+XScreenSaverSetAttributes
+XScreenSaverSuspend
+XScreenSaverUnregister
+XScreenSaverUnsetAttributes
+_fini
+_init
