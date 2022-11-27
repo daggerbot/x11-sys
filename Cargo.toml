@@ -1,6 +1,6 @@
 [package]
 name = "x11-sys"
-version = "1.0.0-main"
+version = "0.1.0"
 description = "X11 library bindings"
 license = "MIT"
 documentation = "https://docs.rs/x11-sys"
