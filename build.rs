@@ -73,9 +73,9 @@ fn generate_bindings() {
             _ => pkg_name,
         };
 
-        let pkg = pkg_config::probe_library(pc_pkg_name).expect("can't probe package");
-
         if std::env::var_os(header_feature).is_some() {
+            let pkg = pkg_config::probe_library(pc_pkg_name).expect("can't probe package");
+
             // Add include directories.
             for dir in pkg.include_paths {
                 builder = builder.clang_arg(format!("-I{}", dir.display()));
@@ -91,37 +91,37 @@ fn generate_bindings() {
                 writeln!(header_file, "#include <{}>", header).expect("write failed");
             }
             println!("cargo:rerun-if-changed={}", header_list_path.display());
-        }
 
-        if std::env::var_os(lib_feature).is_some() {
-            any_libs_enabled = true;
+            if std::env::var_os(lib_feature).is_some() {
+                any_libs_enabled = true;
 
-            // Link libraries.
-            for lib in pkg.libs {
-                println!("cargo:rustc-link-lib={}", lib);
+                // Link libraries.
+                for lib in pkg.libs {
+                    println!("cargo:rustc-link-lib={}", lib);
+                }
+
+                // Add functions to allowlist.
+                let fn_list_path = lists_dir.join(format!("{}-functions.txt", pkg_name));
+                let fn_list_str = match std::fs::read_to_string(&fn_list_path) {
+                    Ok(s) => s,
+                    Err(err) => panic!("{}: {}", fn_list_path.display(), err),
+                };
+                for fn_name in fn_list_str.split_ascii_whitespace() {
+                    builder = builder.allowlist_function(fn_name);
+                }
+                println!("cargo:rerun-if-changed={}", fn_list_path.display());
+
+                // Add vars to allowlist.
+                let var_list_path = lists_dir.join(format!("{}-vars.txt", pkg_name));
+                let var_list_str = match std::fs::read_to_string(&var_list_path) {
+                    Ok(s) => s,
+                    Err(err) => panic!("{}: {}", var_list_path.display(), err),
+                };
+                for var_name in var_list_str.split_ascii_whitespace() {
+                    builder = builder.allowlist_var(var_name);
+                }
+                println!("cargo:rerun-if-changed={}", var_list_path.display());
             }
-
-            // Add functions to allowlist.
-            let fn_list_path = lists_dir.join(format!("{}-functions.txt", pkg_name));
-            let fn_list_str = match std::fs::read_to_string(&fn_list_path) {
-                Ok(s) => s,
-                Err(err) => panic!("{}: {}", fn_list_path.display(), err),
-            };
-            for fn_name in fn_list_str.split_ascii_whitespace() {
-                builder = builder.allowlist_function(fn_name);
-            }
-            println!("cargo:rerun-if-changed={}", fn_list_path.display());
-
-            // Add vars to allowlist.
-            let var_list_path = lists_dir.join(format!("{}-vars.txt", pkg_name));
-            let var_list_str = match std::fs::read_to_string(&var_list_path) {
-                Ok(s) => s,
-                Err(err) => panic!("{}: {}", var_list_path.display(), err),
-            };
-            for var_name in var_list_str.split_ascii_whitespace() {
-                builder = builder.allowlist_var(var_name);
-            }
-            println!("cargo:rerun-if-changed={}", var_list_path.display());
         }
     }
 
